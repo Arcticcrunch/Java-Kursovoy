@@ -11,6 +11,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -135,7 +136,9 @@ public class MainForm
         // Загрузка макс счёта
         LoadHighScore();
         String maxScore = String.format("%08d", highScore);
-        Platform.runLater(() -> {this.highScoreLabel.setText(maxScore);});
+        Platform.runLater(() -> {
+            this.highScoreLabel.setText(maxScore);
+        });
 
         // Инициализация рандома
         if (totalyRandom) random = new Random();
@@ -162,7 +165,6 @@ public class MainForm
         this.soundtracksList.add(tempSound);
 
 
-        //System.out.println(FileSystems.getDefault().getPath("").toAbsolutePath());
 
         // Подготовка кнопок
         newGameButton.setOnAction(actionEvent -> this.NewGame());
@@ -227,7 +229,7 @@ public class MainForm
 
     public void KeyDown(KeyCode keyCode)
     {
-        if (keyCode == KeyCode.A  && this.currentBlock != null)
+        if (keyCode == KeyCode.A && this.currentBlock != null)
         {
             //System.out.println("A");
             if (CheckBlockMoveCollision(this.currentBlock, -1, 0) == false)
@@ -238,8 +240,7 @@ public class MainForm
         if (keyCode == KeyCode.W && this.currentBlock != null)
         {
             TryRotateBlock(this.currentBlock);
-        }
-        else if (keyCode == KeyCode.NUMPAD0 && this.currentBlock != null)
+        } else if (keyCode == KeyCode.NUMPAD0 && this.currentBlock != null)
         {
             TryRotateBlock(this.currentBlock);
         }
@@ -249,7 +250,11 @@ public class MainForm
             //this.gameLoopSleepTime = getGameLoopSleepTime();
         }
 
-        if (keyCode == KeyCode.D  && this.currentBlock != null)
+        if (keyCode == KeyCode.NUMPAD1 && this.currentBlock != null)
+        {
+            SetNextBlock(BlockTypes.Rod);
+        }
+        if (keyCode == KeyCode.D && this.currentBlock != null)
         {
             //System.out.println("D");
             if (CheckBlockMoveCollision(this.currentBlock, 1, 0) == false)
@@ -257,7 +262,7 @@ public class MainForm
                 MoveBlock(this.currentBlock, this.currentBlock.getPosX() + 1, this.currentBlock.getPosY());
             }
         }
-        if (keyCode == KeyCode.SPACE )
+        if (keyCode == KeyCode.SPACE)
         {
             Pause();
         }
@@ -318,8 +323,7 @@ public class MainForm
     // Тик таймера
     public void Tick()
     {
-        if (isGameOver)
-            return;
+        if (isGameOver) return;
         if (isNeedToPlaceNewBlock)
         {
             isNeedToPlaceNewBlock = false;
@@ -333,7 +337,7 @@ public class MainForm
         {
             // Падение основного блока
             boolean isBlockLanded = false;
-            if (CheckBlockMoveCollision(this.currentBlock, 0 , 1) == true)
+            if (CheckBlockMoveCollision(this.currentBlock, 0, 1) == true)
             {
                 // Если блок при падении столкнулся с уже установленными блоками - установить блок
                 BlockLanded(this.currentBlock);
@@ -341,7 +345,7 @@ public class MainForm
             }
 
             // Если блок не упал - опустить его вниз
-            if(isBlockLanded == false)
+            if (isBlockLanded == false)
             {
                 MoveBlock(this.currentBlock, this.currentBlock.getPosX(), this.currentBlock.getPosY() + 1);
             }
@@ -384,15 +388,13 @@ public class MainForm
         this.currentBlock.setPosY(0);
 
 
-
         for (int x = 0; x < this.currentBlock.getCells().length; x++)
         {
             for (int y = 0; y < (this.currentBlock.getCells()[x]).length; y++)
             {
                 if (cls[x][y] == true)
                 {
-                    if (cellsGrid[xPos + x][y].isEmpty())
-                        cellsGrid[xPos + x][y].setColor(this.currentBlock.getColor());
+                    if (cellsGrid[xPos + x][y].isEmpty()) cellsGrid[xPos + x][y].setColor(this.currentBlock.getColor());
                 }
             }
         }
@@ -406,8 +408,7 @@ public class MainForm
 
     private boolean CheckBlockMoveCollision(Block block, int xOffset, int yOffset)
     {
-        if (block == null)
-            return false;
+        if (block == null) return false;
         boolean[][] clls = block.getCells();
         for (int x = 0; x < clls.length; x++)
         {
@@ -557,7 +558,7 @@ public class MainForm
             {
                 isAnimating = true;
                 filledLines[filledLinesCount] = y;
-                filledLinesCount ++;
+                filledLinesCount++;
                 isAnyLineFilled = true;
                 totalLinesFilled++;
             }
@@ -565,8 +566,7 @@ public class MainForm
 
         if (isAnyLineFilled)
         {
-            if (isSoundOn)
-                this.rowFillSound.Play();
+            if (isSoundOn) this.rowFillSound.Play();
             CheckGameSpeed();
         }
     }
@@ -576,16 +576,13 @@ public class MainForm
         if (rowsFilled == 1)
         {
             currentScore += 100;
-        }
-        else if (rowsFilled == 2)
+        } else if (rowsFilled == 2)
         {
             currentScore += 300;
-        }
-        else if (rowsFilled == 2)
+        } else if (rowsFilled == 2)
         {
             currentScore += 700;
-        }
-        else if (rowsFilled >= 4)
+        } else if (rowsFilled >= 4)
         {
             currentScore += 1500;
         }
@@ -594,17 +591,20 @@ public class MainForm
         {
             highScore = currentScore;
             String highScoreString = String.format("%08d", highScore);
-            Platform.runLater(() -> {this.highScoreLabel.setText(highScoreString);});
+            Platform.runLater(() -> {
+                this.highScoreLabel.setText(highScoreString);
+            });
         }
 
         String currentScoreString = String.format("%08d", currentScore);
-        Platform.runLater(() -> {this.currentScoreLabel.setText(currentScoreString);});
+        Platform.runLater(() -> {
+            this.currentScoreLabel.setText(currentScoreString);
+        });
     }
 
     public void MoveBlock(Block block, int newPosX, int newPosY)
     {
-        if (isPause)
-            return;
+        if (isPause) return;
         // Проверка границ поля
         // Bounxing box
 
@@ -660,7 +660,6 @@ public class MainForm
                 newPosY = FIELD_HEIGHT - (yMax - yMin) - 1;
                 System.out.println("Коллизия yMax");
             }
-
 
 
             // Изменение координаты блока
@@ -745,9 +744,15 @@ public class MainForm
 
         this.gameOverOverlay.setVisible(false);
         String currentScoreString = String.format("%08d", currentScore);
-        Platform.runLater(() -> {this.currentScoreLabel.setText(currentScoreString);});
-        Platform.runLater(() -> {gameSpeedLabel.setText(Integer.toString(gameSpeed));});
-        Platform.runLater(() -> {introPanel.setVisible(false);});
+        Platform.runLater(() -> {
+            this.currentScoreLabel.setText(currentScoreString);
+        });
+        Platform.runLater(() -> {
+            gameSpeedLabel.setText(Integer.toString(gameSpeed));
+        });
+        Platform.runLater(() -> {
+            introPanel.setVisible(false);
+        });
         TryToPlaceNewBlock();
     }
 
@@ -759,8 +764,7 @@ public class MainForm
             BufferedWriter writer = new BufferedWriter(new FileWriter(USER_DATA_FILE_NAME));
             writer.write(Long.toString(highScore));
             writer.close();
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
             System.out.println(e.getMessage());
         }
@@ -768,15 +772,14 @@ public class MainForm
 
     public void LoadHighScore()
     {
-        try {
+        try
+        {
             File myObj = new File(USER_DATA_FILE_NAME);
             Scanner myReader = new Scanner(myObj);
             highScore = myReader.nextInt();
-            //while (myReader.hasNextLine()) {
-            //    String data = myReader.nextLine();
-            //}
             myReader.close();
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             System.out.println("Ощибка при загрузке счёта: " + e.getMessage());
         }
     }
@@ -804,14 +807,58 @@ public class MainForm
                 {
                     xOffset = 1;
                     yOffset = 1;
-                }
-                else
+                } else
                 {
                     if (this.nextBlock.getRotation() == BlockRotation.Deg0 || this.nextBlock.getRotation() == BlockRotation.Deg180)
                     {
                         yOffset = 1;
+                    } else
+                    {
+                        xOffset = 1;
                     }
-                    else
+                }
+
+                if (x + xOffset < 4 && y + yOffset < 4)
+                {
+                    if (cls[x][y] == true)
+                    {
+                        previeCellsGrid[x + xOffset][y + yOffset].setColor(this.nextBlock.getColor());
+                    }
+                }
+            }
+        }
+    }
+
+
+    public void SetNextBlock(BlockTypes blockType)
+    {
+        this.nextBlock = new Block(blockColors[random.nextInt(6)], blockType);
+
+        for (int x = 0; x < 4; x++)
+        {
+            for (int y = 0; y < 4; y++)
+            {
+                previeCellsGrid[x][y].setColor(emptyCellColor);
+            }
+        }
+
+        boolean[][] cls = this.nextBlock.getCells();
+        for (int x = 0; x < 4; x++)
+        {
+            for (int y = 0; y < 4; y++)
+            {
+                int xOffset = 0;
+                int yOffset = 0;
+                if (this.nextBlock.getBlockType() != BlockTypes.Rod)
+                {
+                    xOffset = 1;
+                    yOffset = 1;
+                } else
+                {
+                    if (this.nextBlock.getRotation() == BlockRotation.Deg0 || this.nextBlock.getRotation() == BlockRotation.Deg180)
+                    {
+                        yOffset = 1;
+                    } else
                     {
                         xOffset = 1;
                     }
@@ -830,30 +877,31 @@ public class MainForm
 
     public void Pause()
     {
-        if (isPauseEnabled == false)
-            return;
+
+        if (isPauseEnabled == false) return;
         if (isPause == false)
         {
             isPause = true;
-            Platform.runLater(() -> {this.pauseButton.getStyleClass().add("ButtonActivated");});
+            Platform.runLater(() -> {
+                this.pauseButton.getStyleClass().add("ButtonActivated");
+            });
             pauseOverlay.setVisible(true);
-            if (isSoundOn)
-                pauseSound.Play();
-        }
-        else
+            if (isSoundOn) pauseSound.Play();
+        } else
         {
             isPause = false;
-            Platform.runLater(() -> {pauseButton.getStyleClass().removeAll("ButtonActivated");});
+            Platform.runLater(() -> {
+                pauseButton.getStyleClass().removeAll("ButtonActivated");
+            });
             pauseOverlay.setVisible(false);
-            if (isSoundOn)
-                pauseSound.Play();
+            if (isSoundOn) pauseSound.Play();
         }
     }
 
 
     public long GetSpeedPenalty(int speed)
     {
-        return (long)(BASE_GAME_SPEED * (Math.sqrt(((float)speed) / 26)));
+        return (long) (BASE_GAME_SPEED * (Math.sqrt(((float) speed) / 26)));
     }
 
     private void GameOver()
@@ -862,8 +910,12 @@ public class MainForm
         this.isPauseEnabled = false;
         this.gameOverOverlay.setVisible(true);
         String currentScoreString = String.format("%08d", currentScore);
-        Platform.runLater(() -> {this.gameOverScoreLabel.setText(currentScoreString);});
-        Platform.runLater(() -> {this.pauseButton.setDisable(true);});
+        Platform.runLater(() -> {
+            this.gameOverScoreLabel.setText(currentScoreString);
+        });
+        Platform.runLater(() -> {
+            this.pauseButton.setDisable(true);
+        });
         SaveHighScore(currentScore);
         System.out.println("Game Over!");
     }
@@ -874,14 +926,17 @@ public class MainForm
         if (isSoundOn)
         {
             isSoundOn = false;
-            Platform.runLater(() -> {this.musicButton.getStyleClass().add("ButtonActivated");});
+            Platform.runLater(() -> {
+                this.musicButton.getStyleClass().add("ButtonActivated");
+            });
             soundtracksList.get(musicTrackNumber).Stop();
-        }
-        else
+        } else
         {
             isSoundOn = true;
             soundtracksList.get(musicTrackNumber).ContinuePlay();
-            Platform.runLater(() -> {this.musicButton.getStyleClass().removeAll("ButtonActivated");});
+            Platform.runLater(() -> {
+                this.musicButton.getStyleClass().removeAll("ButtonActivated");
+            });
         }
     }
 
@@ -897,7 +952,9 @@ public class MainForm
         {
             totalLinesFilled = totalLinesFilled % LINES_TO_SPEED_UP;
             gameSpeed = Utilities.Clamp(gameSpeed + 1, 1, 20);
-            Platform.runLater(() -> {gameSpeedLabel.setText(Integer.toString(gameSpeed));});
+            Platform.runLater(() -> {
+                gameSpeedLabel.setText(Integer.toString(gameSpeed));
+            });
         }
     }
 
@@ -906,14 +963,12 @@ public class MainForm
         if (isAnimating)
         {
             return (BASE_GAME_SPEED - GetSpeedPenalty(gameSpeed)) / ANIMATION_TICKS;
-        }
-        else
+        } else
         {
             if (isSpeedUp)
             {
                 return (BASE_GAME_SPEED - GetSpeedPenalty(gameSpeed)) / (speedUpCoef * ANIMATION_TICKS);
-            }
-            else
+            } else
             {
                 return (BASE_GAME_SPEED - GetSpeedPenalty(gameSpeed)) / ANIMATION_TICKS;
             }

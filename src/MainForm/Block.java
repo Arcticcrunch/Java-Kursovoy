@@ -109,63 +109,14 @@ public class Block
         this.setColor(color);
 
         GenerateBlock();
-        //this.cells = GenerateBlock();
+    }
+    public Block (Color color, BlockTypes type)
+    {
+        this.setColor(color);
+
+        GenerateBlock(type);
     }
 
-    //private boolean[][] GenerateBlock()
-    //{
-    //    int rotation = MainForm.getRandom().nextInt(BlockRotation.values().length);
-    //    int blockType = MainForm.getRandom().nextInt(BlockTypes.values().length);
-//
-    //    switch (rotation)
-    //    {
-    //        case 0:
-    //            this.rotation = BlockRotation.Deg0;
-    //            break;
-    //        case 1:
-    //            this.rotation = BlockRotation.Deg90;
-    //            break;
-    //        case 2:
-    //            this.rotation = BlockRotation.Deg180;
-    //            break;
-    //        case 3:
-    //            this.rotation = BlockRotation.Deg270;
-    //            break;
-    //    }
-//
-    //    switch (blockType)
-    //    {
-    //        case 0:
-    //            this.blockType = BlockTypes.Rod;
-    //            break;
-    //        case 1:
-    //            this.blockType = BlockTypes.Square;
-    //            break;
-    //        case 2:
-    //            this.blockType = BlockTypes.SShape;
-    //            break;
-    //        case 3:
-    //            this.blockType = BlockTypes.ZShape;
-    //            break;
-    //        case 4:
-    //            this.blockType = BlockTypes.TShape;
-    //            break;
-    //        case 5:
-    //            this.blockType = BlockTypes.JShape;
-    //            break;
-    //        case 6:
-    //            this.blockType = BlockTypes.LShape;
-    //            break;
-    //    }
-//
-//
-    //    // "Свап" осей X и Y для удобства разметки паттернов блоков
-    //    boolean[][] tempCells = BlockPatterns[MainForm.getRandom().nextInt(BlockTypes.values().length)];
-    //    boolean[][] resultCells = SwapAxies(tempCells);
-//
-//
-    //    return resultCells;
-    //}
 
     // "Свап" осей X и Y для удобства разметки паттернов блоков
     public boolean[][] SwapAxies(boolean[][] grid)
@@ -227,66 +178,32 @@ public class Block
             }
         }
     }
-    //private boolean[][] GenerateBlock(BlockTypes blockType)
-    //{
-    //    int rotation = MainForm.getRandom().nextInt(BlockRotation.values().length);
-//
-    //    switch (rotation)
-    //    {
-    //        case 0:
-    //            this.rotation = BlockRotation.Deg0;
-    //            break;
-    //        case 1:
-    //            this.rotation = BlockRotation.Deg90;
-    //            break;
-    //        case 2:
-    //            this.rotation = BlockRotation.Deg180;
-    //            break;
-    //        case 3:
-    //            this.rotation = BlockRotation.Deg270;
-    //            break;
-    //    }
-//
-    //    switch (blockType)
-    //    {
-    //        case Square -> {
-    //            this.blockType = BlockTypes.Square;
-    //        }
-    //        case TShape -> {
-    //            this.blockType = BlockTypes.TShape;
-    //        }
-    //        case Rod -> {
-    //            this.blockType = BlockTypes.Rod;
-    //        }
-    //        case LShape -> {
-    //            this.blockType = BlockTypes.LShape;
-    //        }
-    //        case JShape -> {
-    //            this.blockType = BlockTypes.JShape;
-    //        }
-    //        case ZShape -> {
-    //            this.blockType = BlockTypes.ZShape;
-    //        }
-    //        case SShape -> {
-    //            this.blockType = BlockTypes.SShape;
-    //        }
-    //    }
-//
-    //    boolean[][] tempCells = BlockPatterns[MainForm.getRandom().nextInt(BlockTypes.values().length)];
-    //    boolean[][] resultCells = new boolean[4][4];
-//
-    //    // "Свап" осей X и Y для удобства разметки паттернов блоков
-    //    for (int x = 0; x < tempCells.length; x++)
-    //    {
-    //        for (int y = 0; y < (tempCells[x]).length; y++)
-    //        {
-    //            resultCells[y][x] = tempCells[x][y];
-    //        }
-    //    }
-//
-    //    return resultCells;
-    //}
-//
+
+    private void GenerateBlock(BlockTypes type)
+    {
+        int rotation = MainForm.getRandom().nextInt(BlockRotation.values().length);
+        int newBlockType = MainForm.getRandom().nextInt(BlockTypes.values().length);
+
+        switch (rotation)
+        {
+            case 0:
+                this.rotation = BlockRotation.Deg0;
+                break;
+            case 1:
+                this.rotation = BlockRotation.Deg90;
+                break;
+            case 2:
+                this.rotation = BlockRotation.Deg180;
+                break;
+            case 3:
+                this.rotation = BlockRotation.Deg270;
+                break;
+        }
+
+        this.blockType = type;
+    }
+
+
     public BlockRotation GetNextRotation()
     {
         switch (rotation)

@@ -34,9 +34,6 @@ public class GameLoop extends Thread
 
             form.AnimationTick(animationTick);
         }
-
         form.Exit();
     }
-
-
 }

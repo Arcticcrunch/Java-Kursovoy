@@ -20,15 +20,11 @@ public class Cell
 
 
     private boolean isEmpty = true;
-
     private Pane rect;
-
-
-
     public Color getColor() {
         return (Color)this.rect.getBackground().getFills().get(0).getFill();
-        //return color;
     }
+
 
     public void setColor(Color color) {
         //this.rect.
