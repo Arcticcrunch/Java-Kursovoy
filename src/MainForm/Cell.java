@@ -18,34 +18,32 @@ public class Cell
         this.setEmpty(isEmpty);
     }
 
-
     private boolean isEmpty = true;
     private Pane rect;
-    public Color getColor() {
-        return (Color)this.rect.getBackground().getFills().get(0).getFill();
+
+    public Color getColor()
+    {
+        return (Color) this.rect.getBackground().getFills().get(0).getFill();
     }
 
 
-    public void setColor(Color color) {
-        //this.rect.
-        //if (this.rect != null) {
-        //    this.rect.setStyle("-fx-background-color: blue;");
-        //    return true;
-        //}
-        //return false;
+    public void setColor(Color color)
+    {
         this.rect.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
-        //this.color = color;
     }
 
-    public boolean isEmpty() {
+    public boolean isEmpty()
+    {
         return isEmpty;
     }
 
-    public void setEmpty(boolean empty) {
+    public void setEmpty(boolean empty)
+    {
         isEmpty = empty;
     }
 
-    public Pane getRect() {
+    public Pane getRect()
+    {
         return rect;
     }
 

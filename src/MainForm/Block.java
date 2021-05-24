@@ -4,8 +4,7 @@ import javafx.scene.paint.Color;
 
 public class Block
 {
-
-    //</editor-fold desc = "Паттерны блоков Тетриса">
+    // Паттерны блоков Тетриса
     public static final boolean[][][] BlockPatterns;
 
     static
@@ -26,7 +25,6 @@ public class Block
                 // S-образный
                 new boolean[][]{new boolean[]{false, true, true, false,}, new boolean[]{true, true, false, false,}, new boolean[]{false, false, false, false,}, new boolean[]{false, false, false, false,},},};
     }
-    //</editor-fold>
 
 
     public static final boolean[][][] BlockPatterns90;
@@ -96,7 +94,6 @@ public class Block
 
     private int posX = 0;
     private int posY = 0;
-    //private boolean[][] cells;
     private BlockTypes blockType = BlockTypes.Square;
     private BlockRotation rotation = BlockRotation.Deg0;
 

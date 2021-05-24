@@ -231,7 +231,6 @@ public class MainForm
     {
         if (keyCode == KeyCode.A && this.currentBlock != null)
         {
-            //System.out.println("A");
             if (CheckBlockMoveCollision(this.currentBlock, -1, 0) == false)
             {
                 MoveBlock(this.currentBlock, this.currentBlock.getPosX() - 1, this.currentBlock.getPosY());
@@ -247,7 +246,6 @@ public class MainForm
         if (keyCode == KeyCode.S && this.currentBlock != null)
         {
             this.isSpeedUp = true;
-            //this.gameLoopSleepTime = getGameLoopSleepTime();
         }
 
         if (keyCode == KeyCode.NUMPAD1 && this.currentBlock != null)
@@ -274,7 +272,6 @@ public class MainForm
         if (keyCode == KeyCode.S)
         {
             this.isSpeedUp = false;
-            //this.gameLoopSleepTime = this.BASE_GAME_SPEED / ANIMATION_TICKS;
         }
         if (keyCode == KeyCode.ESCAPE)
         {
@@ -718,6 +715,8 @@ public class MainForm
 
     public void NewGame()
     {
+        if (totalyRandom == false)
+            random.setSeed(randomSeed);
         this.isGameOver = false;
         this.isPauseEnabled = true;
         this.pauseButton.setDisable(false);
@@ -942,6 +941,7 @@ public class MainForm
 
     public void Exit()
     {
+        SaveHighScore(highScore);
         Platform.exit();
         System.exit(0);
     }
