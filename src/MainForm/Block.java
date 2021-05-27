@@ -94,10 +94,9 @@ public class Block
 
     private int posX = 0;
     private int posY = 0;
+
     private BlockTypes blockType = BlockTypes.Square;
     private BlockRotation rotation = BlockRotation.Deg0;
-
-
     private Color color;
 
 

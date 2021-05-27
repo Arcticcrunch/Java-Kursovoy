@@ -247,14 +247,12 @@ public class MainForm
         {
             this.isSpeedUp = true;
         }
-
         if (keyCode == KeyCode.NUMPAD1 && this.currentBlock != null)
         {
             SetNextBlock(BlockTypes.Rod);
         }
         if (keyCode == KeyCode.D && this.currentBlock != null)
         {
-            //System.out.println("D");
             if (CheckBlockMoveCollision(this.currentBlock, 1, 0) == false)
             {
                 MoveBlock(this.currentBlock, this.currentBlock.getPosX() + 1, this.currentBlock.getPosY());
@@ -505,7 +503,6 @@ public class MainForm
                     cellsGrid[x][filledLines[i]].setEmpty(true);
                     cellsGrid[x][filledLines[i]].setColor(emptyCellColor);
                 }
-                //System.out.println(filledLines[i]);
                 // Опускание всех вышестоящих блоков
                 for (int y = filledLines[i]; y > 0; y--)
                 {

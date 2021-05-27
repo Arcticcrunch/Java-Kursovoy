@@ -33,7 +33,6 @@ public class Main extends Application
         Main.MainWindow.setOnKeyPressed(e -> {
             mainForm.KeyDown(e.getCode());
         });
-
         Main.MainWindow.setOnKeyReleased(e -> {
             mainForm.KeyUp(e.getCode());
         });
@@ -42,7 +41,6 @@ public class Main extends Application
 
         primaryStage.show();
 
-        //primaryStage.getIcons().add();
     }
 
     @Override
