@@ -1,5 +1,7 @@
 package MainForm;
 
+import java.io.Console;
+
 import javafx.scene.paint.Color;
 
 public class Block
@@ -105,12 +107,16 @@ public class Block
         this.setColor(color);
 
         GenerateBlock();
+
+        //System.out.println("---Generated Block type: " + this.blockType.toString());
     }
     public Block (Color color, BlockTypes type)
     {
         this.setColor(color);
 
         GenerateBlock(type);
+
+        //System.out.println("---Generated Block type: " + this.blockType.toString());
     }
 
 
@@ -132,66 +138,74 @@ public class Block
     {
         int rotation = MainForm.getRandom().nextInt(BlockRotation.values().length);
         int newBlockType = MainForm.getRandom().nextInt(BlockTypes.values().length);
+        //System.out.println("---Block type: " + this.rotation);
 
         switch (rotation)
         {
-            case 0:
+            case (0):
                 this.rotation = BlockRotation.Deg0;
                 break;
-            case 1:
+            case (1):
                 this.rotation = BlockRotation.Deg90;
                 break;
-            case 2:
+            case (2):
                 this.rotation = BlockRotation.Deg180;
                 break;
-            case 3:
+            case (3):
                 this.rotation = BlockRotation.Deg270;
                 break;
         }
 
         switch (newBlockType)
         {
-            case 0: {
+            case (0): {
                 this.blockType = BlockTypes.Square;
             }
-            case 1:  {
+            break;
+            case (1):  {
                 this.blockType = BlockTypes.TShape;
             }
-            case 2:  {
+            break;
+            case (2):  {
                 this.blockType = BlockTypes.Rod;
             }
-            case 3:  {
+            break;
+            case (3):  {
                 this.blockType = BlockTypes.LShape;
             }
-            case 4:  {
+            break;
+            case (4):  {
                 this.blockType = BlockTypes.JShape;
             }
-            case 5:  {
+            break;
+            case (5):  {
                 this.blockType = BlockTypes.ZShape;
             }
-            case 6:  {
+            break;
+            case (6):  {
                 this.blockType = BlockTypes.SShape;
             }
+            break;
         }
     }
 
     private void GenerateBlock(BlockTypes type)
     {
         int rotation = MainForm.getRandom().nextInt(BlockRotation.values().length);
-        int newBlockType = MainForm.getRandom().nextInt(BlockTypes.values().length);
+        //int newBlockType = MainForm.getRandom().nextInt(BlockTypes.values().length);
 
         switch (rotation)
         {
-            case 0:
+            case (0):
                 this.rotation = BlockRotation.Deg0;
                 break;
-            case 1:
+            case (1):
                 this.rotation = BlockRotation.Deg90;
                 break;
-            case 2:
+            case (2):
                 this.rotation = BlockRotation.Deg180;
                 break;
-            case 3:
+            case (3):
                 this.rotation = BlockRotation.Deg270;
                 break;
         }
@@ -232,25 +246,33 @@ public class Block
                     case Square:  {
                         result = BlockPatterns[0];
                     }
+                    break;
                     case TShape:  {
                         result = BlockPatterns[1];
                     }
+                    break;
                     case Rod:  {
                         result = BlockPatterns[2];
                     }
+                    break;
                     case LShape:  {
                         result = BlockPatterns[3];
                     }
+                    break;
                     case JShape:  {
                         result = BlockPatterns[4];
                     }
+                    break;
                     case ZShape:  {
                         result = BlockPatterns[5];
                     }
+                    break;
                     case SShape:  {
                         result = BlockPatterns[6];
                     }
+                    break;
                 }
+                break;
             }
             case Deg90:  {
                 switch (blockType)
@@ -258,25 +280,33 @@ public class Block
                     case Square:  {
                         result = BlockPatterns90[0];
                     }
+                    break;
                     case TShape:  {
                         result = BlockPatterns90[1];
                     }
+                    break;
                     case Rod:  {
                         result = BlockPatterns90[2];
                     }
+                    break;
                     case LShape:  {
                         result = BlockPatterns90[3];
                     }
+                    break;
                     case JShape:  {
                         result = BlockPatterns90[4];
                     }
+                    break;
                     case ZShape:  {
                         result = BlockPatterns90[5];
                     }
+                    break;
                     case SShape:  {
                         result = BlockPatterns90[6];
                     }
+                    break;
                 }
+                break;
             }
             case Deg180:  {
                 switch (blockType)
@@ -284,25 +314,33 @@ public class Block
                     case Square:  {
                         result = BlockPatterns180[0];
                     }
+                    break;
                     case TShape:  {
                         result = BlockPatterns180[1];
                     }
+                    break;
                     case Rod:  {
                         result = BlockPatterns180[2];
                     }
+                    break;
                     case LShape:  {
                         result = BlockPatterns180[3];
                     }
+                    break;
                     case JShape: {
                         result = BlockPatterns180[4];
                     }
+                    break;
                     case ZShape:  {
                         result = BlockPatterns180[5];
                     }
+                    break;
                     case SShape:  {
                         result = BlockPatterns180[6];
                     }
+                    break;
                 }
+                break;
             }
             case Deg270:  {
                 switch (blockType)
@@ -310,25 +348,33 @@ public class Block
                     case Square:  {
                         result = BlockPatterns270[0];
                     }
+                    break;
                     case TShape:  {
                         result = BlockPatterns270[1];
                     }
+                    break;
                     case Rod:  {
                         result = BlockPatterns270[2];
                     }
+                    break;
                     case LShape:  {
                         result = BlockPatterns270[3];
                     }
+                    break;
                     case JShape:  {
                         result = BlockPatterns270[4];
                     }
+                    break;
                     case ZShape:  {
                         result = BlockPatterns270[5];
                     }
+                    break;
                     case SShape:  {
                         result = BlockPatterns270[6];
                     }
+                    break;
                 }
+                break;
             }
         }
 

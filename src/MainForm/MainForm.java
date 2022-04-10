@@ -11,7 +11,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+//import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -33,10 +33,10 @@ public class MainForm
     public final long BASE_GAME_SPEED = 500;
 
     // Глобальные параметры
-    private float cellBorderSize = 2f;
+    //private float cellBorderSize = 2f;
     private Color emptyCellColor = Color.rgb(4, 15, 30);
-    private Color cellBorderColor = Color.rgb(132, 132, 132);
-    private String cellStyleClass = "Cell";
+    //private Color cellBorderColor = Color.rgb(132, 132, 132);
+    //private String cellStyleClass = "Cell";
 
     private GameLoop gameThread;
 
@@ -70,7 +70,7 @@ public class MainForm
     private Sound rowFillSound;
     private Sound pauseSound;
     private ArrayList<Sound> soundtracksList;
-    private long musicPosition = 0;
+    //private long musicPosition = 0;
 
     private Block currentBlock;
     private Block nextBlock;
