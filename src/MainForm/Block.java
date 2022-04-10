@@ -151,25 +151,25 @@ public class Block
 
         switch (newBlockType)
         {
-            case 0 -> {
+            case 0: {
                 this.blockType = BlockTypes.Square;
             }
-            case 1 -> {
+            case 1:  {
                 this.blockType = BlockTypes.TShape;
             }
-            case 2 -> {
+            case 2:  {
                 this.blockType = BlockTypes.Rod;
             }
-            case 3 -> {
+            case 3:  {
                 this.blockType = BlockTypes.LShape;
             }
-            case 4 -> {
+            case 4:  {
                 this.blockType = BlockTypes.JShape;
             }
-            case 5 -> {
+            case 5:  {
                 this.blockType = BlockTypes.ZShape;
             }
-            case 6 -> {
+            case 6:  {
                 this.blockType = BlockTypes.SShape;
             }
         }
@@ -204,16 +204,16 @@ public class Block
     {
         switch (rotation)
         {
-            case Deg0 -> {
+            case Deg0:  {
                 return BlockRotation.Deg90;
             }
-            case Deg90 -> {
+            case Deg90:  {
                 return BlockRotation.Deg180;
             }
-            case Deg180 -> {
+            case Deg180:  {
                 return BlockRotation.Deg270;
             }
-            case Deg270 -> {
+            case Deg270:  {
                 return BlockRotation.Deg0;
             }
         }
@@ -226,106 +226,106 @@ public class Block
         boolean[][] result = new boolean[4][4];
         switch (rot)
         {
-            case Deg0 -> {
+            case Deg0:  {
                 switch (blockType)
                 {
-                    case Square -> {
+                    case Square:  {
                         result = BlockPatterns[0];
                     }
-                    case TShape -> {
+                    case TShape:  {
                         result = BlockPatterns[1];
                     }
-                    case Rod -> {
+                    case Rod:  {
                         result = BlockPatterns[2];
                     }
-                    case LShape -> {
+                    case LShape:  {
                         result = BlockPatterns[3];
                     }
-                    case JShape -> {
+                    case JShape:  {
                         result = BlockPatterns[4];
                     }
-                    case ZShape -> {
+                    case ZShape:  {
                         result = BlockPatterns[5];
                     }
-                    case SShape -> {
+                    case SShape:  {
                         result = BlockPatterns[6];
                     }
                 }
             }
-            case Deg90 -> {
+            case Deg90:  {
                 switch (blockType)
                 {
-                    case Square -> {
+                    case Square:  {
                         result = BlockPatterns90[0];
                     }
-                    case TShape -> {
+                    case TShape:  {
                         result = BlockPatterns90[1];
                     }
-                    case Rod -> {
+                    case Rod:  {
                         result = BlockPatterns90[2];
                     }
-                    case LShape -> {
+                    case LShape:  {
                         result = BlockPatterns90[3];
                     }
-                    case JShape -> {
+                    case JShape:  {
                         result = BlockPatterns90[4];
                     }
-                    case ZShape -> {
+                    case ZShape:  {
                         result = BlockPatterns90[5];
                     }
-                    case SShape -> {
+                    case SShape:  {
                         result = BlockPatterns90[6];
                     }
                 }
             }
-            case Deg180 -> {
+            case Deg180:  {
                 switch (blockType)
                 {
-                    case Square -> {
+                    case Square:  {
                         result = BlockPatterns180[0];
                     }
-                    case TShape -> {
+                    case TShape:  {
                         result = BlockPatterns180[1];
                     }
-                    case Rod -> {
+                    case Rod:  {
                         result = BlockPatterns180[2];
                     }
-                    case LShape -> {
+                    case LShape:  {
                         result = BlockPatterns180[3];
                     }
-                    case JShape -> {
+                    case JShape: {
                         result = BlockPatterns180[4];
                     }
-                    case ZShape -> {
+                    case ZShape:  {
                         result = BlockPatterns180[5];
                     }
-                    case SShape -> {
+                    case SShape:  {
                         result = BlockPatterns180[6];
                     }
                 }
             }
-            case Deg270 -> {
+            case Deg270:  {
                 switch (blockType)
                 {
-                    case Square -> {
+                    case Square:  {
                         result = BlockPatterns270[0];
                     }
-                    case TShape -> {
+                    case TShape:  {
                         result = BlockPatterns270[1];
                     }
-                    case Rod -> {
+                    case Rod:  {
                         result = BlockPatterns270[2];
                     }
-                    case LShape -> {
+                    case LShape:  {
                         result = BlockPatterns270[3];
                     }
-                    case JShape -> {
+                    case JShape:  {
                         result = BlockPatterns270[4];
                     }
-                    case ZShape -> {
+                    case ZShape:  {
                         result = BlockPatterns270[5];
                     }
-                    case SShape -> {
+                    case SShape:  {
                         result = BlockPatterns270[6];
                     }
                 }
